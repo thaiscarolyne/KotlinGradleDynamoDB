@@ -1,0 +1,35 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+    id "org.jetbrains.kotlin.kapt" version "1.4.10"
+    id "org.jetbrains.kotlin.plugin.allopen" version "1.4.10"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //Kotlin
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+
+    //AWS
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.909')
+    implementation 'com.amazonaws:aws-java-sdk-dynamodb'
+}
+
+//mainClassName = "ApplicationKt"
+
+java {
+    sourceCompatibility = JavaVersion.toVersion('11')
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "11"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "11"
+}
